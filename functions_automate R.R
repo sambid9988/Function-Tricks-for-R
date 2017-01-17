@@ -148,3 +148,14 @@ LogRegData$Segment <-ifelse(LogRegData[,"Score"] > Pctl_tbl[Pctl_tbl$quantiles==
 LiftChartData<-data.frame(CrossTable(LogRegData$Default_On_Payment,LogRegData$Segment) )
 LiftChartData <- LiftChartData[LiftChartData$prop.col.x==1,c("t.Freq","prop.col.y")]
 LiftChartData
+
+##Creating lags  if any with output using acf plot
+for (i in 1:15){
+    colname = paste('lag',i)
+    x.train[colname] <- NA
+    x.train[colname] <- Lag(sj.train$total_cases, i)
+}  
+  
+  
+  
+  
